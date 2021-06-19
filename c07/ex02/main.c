@@ -5,33 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfelicio <rfelicio@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 14:17:10 by rfelicio          #+#    #+#             */
-/*   Updated: 2021/06/13 11:12:32 by rfelicio         ###   ########.fr       */
+/*   Created: 2021/06/17 12:28:19 by rfelicio          #+#    #+#             */
+/*   Updated: 2021/06/17 15:36:43 by rfelicio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
-#include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-void	ft_putnbr(int nb);
+int	ft_ultimate_range(int **range, int min, int max);
 
 int	main(void)
 {
-	write(1, "0: ", 3);
-	ft_putnbr(0);
-	write(1, "\n-1: ", 4);
-	ft_putnbr(-1);
-	write(1, "\n1: ", 4);
-	ft_putnbr(1);
-	write(1, "\n-10: ", 6);
-	ft_putnbr(-10);
-	write(1, "\n10: ", 5);
-	ft_putnbr(10);
-	write(1, "\nINT_MAX: ", 10);
-	ft_putnbr(INT_MAX);
-	write(1, "\nINT_MIN: ", 10);
-	ft_putnbr(INT_MIN);
-	write(1, "\n", 1);
+	int	**null;
+	int	**range0;
+	int	**range1;
+	int	addr0;
+	int	*addr;
+	int	*addr1;
+
+	null = NULL;
+	range0 = 0;
+	addr = &addr0;
+	addr1 = &addr0;
+	range0 = &addr1;
+	range1 = &addr;
+	printf("expected: -1 got: %d\n", ft_ultimate_range(null, 2, 5));
+
+	printf("addr range0: %p\n", range0);
+	printf("expected:  0 got:  %d\n", ft_ultimate_range(range0, 5, 2));
+	printf("addr range0: %p\n", range0);
+	printf("addr range1: %p\n", range1);
+	printf("expected:  3 got:  %d\n", ft_ultimate_range(range1, 2, 5));
+	printf("addr range1: %p\n", range1);
+	printf("%d\n", range1[0][0]);
+	printf("%d\n", range1[0][1]);
+	printf("%d\n", range1[0][2]);
+	// free(range1);
+	// free(range0);
 	return (0);
 }
